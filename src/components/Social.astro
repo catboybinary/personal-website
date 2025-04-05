@@ -49,16 +49,23 @@ const bgColorB = hexToRgba(colorB, 0.1);
 
     .gradient-box:hover {
         translate: 0 -2px; /* Adjust hover translation */
-        animation: 1s ease-in-out infinite alternate rotation;
+        animation: 2s infinite ease-out rotation;
     }
 
     @keyframes rotation {
-        from {
-            rotate: -2deg;
+        25% {
+            rotate: 2deg;
+            animation-timing-function: ease-in;
         }
 
-        to {
-            rotate: 2deg;
+        50% {
+            rotate: 0deg;
+            animation-timing-function: ease-out;
+        }
+
+        75% {
+            rotate: -2deg;
+            animation-timing-function: ease-in;
         }
     }
 
