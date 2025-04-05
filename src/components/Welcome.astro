@@ -31,18 +31,15 @@ function getAnim() : string {
             <h2>occupations:
                 <code style={getAnim()}><pre>java programmer</pre></code><code style={getAnim()}><pre>game developer</pre></code> :3
             </h2>
-            <h2>you can find my projects at the links below</h2>
+            <h2 style="text-align: center; margin-top: 32px">my socials</h2>
             <div class="links">
                 <Social link="https://twitter.com/catboybinary" colorA="#1c9bf0" colorB="#69deff">twitter</Social>
                 <Social link="https://www.twitch.tv/catboybinary" colorA="#9146ff" colorB="#9146ff">twitch</Social>
                 <Social link="https://www.youtube.com/@catboybinary" colorA="#ff0033" colorB="#ff296d">youtube</Social>
                 <Social link="https://t.me/catboybinary" colorA="#25c6f0" colorB="#1d83cc">telegram</Social>
-            </div>
-            <div class="links">
                 <Social link="https://github.com/catboybinary" colorA="#FFFFFF" colorB="#AAAAAA">github</Social>
                 <Social link="https://www.curseforge.com/members/catboybinary/projects" colorA="#fd8b38" colorB="#cc2e17">curseforge</Social>
                 <Social link="https://modrinth.com/user/catboybinary" colorA="#1ced89" colorB="#14cb47">modrinth</Social>
-
             </div>
         </div>
     </main>
@@ -131,9 +128,10 @@ function getAnim() : string {
     h2 {
         color: white;
         font-weight: 300;
-        margin-bottom: 5px; /* Adjust margin */
-        margin-top: 5px; /* Adjust margin */
+        margin-bottom: 0; /* Adjust margin */
+        margin-top: 0; /* Adjust margin */
         font-size: 1.5rem; /* Use relative units for better scaling */
+        width: 100%; /* Ensure it respects the max-width on smaller screens */
     }
 
     main {
@@ -146,10 +144,12 @@ function getAnim() : string {
 
     #hero {
         display: flex;
-        align-items: start;
+        text-align: left;
+        align-items: center;
         flex-direction: column;
         justify-content: center;
         padding: 16px;
+        max-width: 660px /* Match the max-width of your h2 (or adjust as needed) */
     }
 
     h1 {
@@ -163,10 +163,14 @@ function getAnim() : string {
         display: flex;
         justify-content: center;
         flex-wrap: wrap; /* Allow links to wrap to the next line on smaller screens */
-        width: 100%;
         gap: 10px; /* Adjust gap */
-        padding-bottom: 10px; /* Adjust padding */
-        transform: translateY(50%); /* Remove the initial translation */
+        max-width: 80%;
+        padding: 10px;
+        transform: translateY(10px); /* Remove the initial translation */
+        background: linear-gradient(66.77deg, #030409 0%, #030409 100%) padding-box,
+        linear-gradient(155deg, #d83333 0%, #f041ff 100%) border-box;
+        border: solid transparent 2px;
+        border-radius: 16px;
     }
 
     pre {
@@ -194,7 +198,7 @@ function getAnim() : string {
         border-radius: 16px;
         border: 2px solid transparent;
         padding: 0.3em 0.6em; /* Adjust code padding */
-        margin: 0 0.2em 0 0.2em; /* Adjust code margin */
+        margin: 0.3em; /* Adjust code margin */
         font-size: 1rem; /* Adjust code font size */
     }
 
@@ -207,25 +211,14 @@ function getAnim() : string {
         }
     }
 
-    @media screen and (max-height: 368px) {
-        #news {
-            display: none;
-        }
-    }
-
     /* Mobile-specific styles */
     @media screen and (max-width: 768px) {
         #container {
-            padding: 16px; /* Adjust overall container padding for smaller screens */
+            padding: 8px; /* Adjust overall container padding for smaller screens */
         }
 
         #hero {
-            padding-top: 5vh; /* Adjust top padding relative to viewport height */
-            display: flex;
-            align-items: center; /* Center items horizontally */
-            flex-direction: column; /* Stack items vertically */
-            justify-content: center; /* Center items vertically */
-            text-align: center; /* Center text within the hero section */
+            max-width: 95%; /* Match the max-width of your h2 (or adjust as needed) */
         }
 
         h2 {
@@ -233,12 +226,15 @@ function getAnim() : string {
         }
 
         pre {
-            font-size: 1.1rem; /* Adjust pre font size */
+            font-size: 1rem; /* Adjust pre font size */
+        }
+
+        code {
+            padding: 0.2em 0.4em; /* Adjust code padding */
         }
 
         .links {
-            justify-content: center; /* Ensure links are centered on mobile */
-            padding-bottom: 16px;
+            max-width: 100%;
         }
 
         /* You might want to adjust the font size of the Social component on mobile */
