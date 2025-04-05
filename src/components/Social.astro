@@ -26,8 +26,8 @@ const bgColorB = hexToRgba(colorB, 0.1);
 <style define:vars={{colorA, colorB, bgColorA, bgColorB}}>
     .gradient-box {
         display: inline-block;
-        padding: 10px 0;
-        border-radius: 10px;
+        padding: 10px 0; /* Adjust padding */
+        border-radius: 10px; /* Adjust border radius */
         position: relative;
         background: linear-gradient(to right, var(--bgColorA), var(--bgColorB));
         transition: translate 0.15s ease-in-out;
@@ -48,7 +48,7 @@ const bgColorB = hexToRgba(colorB, 0.1);
     }
 
     .gradient-box:hover {
-        translate: 0 -3px;
+        translate: 0 -2px; /* Adjust hover translation */
         animation: 1s ease-in-out infinite alternate rotation;
     }
 
@@ -63,15 +63,15 @@ const bgColorB = hexToRgba(colorB, 0.1);
     }
 
     .gradient-box a {
-        font-size: 18px;
+        font-size: 1.2rem; /* Adjust font size for mobile */
         font-weight: 350;
-        padding: 10px 20px;
+        padding: 8px 16px; /* Adjust padding for mobile */
         text-decoration: none;
         background: linear-gradient(45deg, var(--colorA), var(--colorB));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
         vertical-align: middle;
-        line-height: 4px; /* <-- adjust this */
+        line-height: 0.5; /* Adjust line height for better text wrapping */
     }
 </style>

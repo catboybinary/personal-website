@@ -7,38 +7,48 @@ let now: Date = new Date();
 let ageInMs = now.getTime() - birthDate.getTime();
 let ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
 let age = ageInYears.toFixed(9);
+
+function getAnim() : string {
+    let x = Math.random()
+    return "animation: "+(1.35+x)+"s ease-in-out infinite alternate anim;"
+}
 ---
 
 <div id="container">
     <img id="background" src={background.src} alt="" fetchpriority="high"/>
     <main>
         <div id="hero">
-            <h2>hi, i'm <code>
+            <h2>hi, i'm <code style={getAnim()}>
                 <pre>catboybinary</pre>
             </code></h2>
-            <h2>i am <code>
+            <h2>i am <code style={getAnim()}>
                 <pre id="age">{age}</pre>
             </code> years old
             </h2>
-            <h2>my pronouns are <code>
+            <h2>my pronouns are <code style={getAnim()}>
                 <pre class="pronouns"></pre>
             </code></h2>
             <h2>occupations:
-                <code><pre>java programmer</pre></code><code><pre>game developer</pre></code> :3
+                <code style={getAnim()}><pre>java programmer</pre></code><code style={getAnim()}><pre>game developer</pre></code> :3
             </h2>
             <h2>you can find my projects at the links below</h2>
-
-            <div id="links">
-                <Social link="https://github.com/catboybinary" colorA="#ABABAB" colorB="#777777">github</Social>
+            <div class="links">
+                <Social link="https://twitter.com/catboybinary" colorA="#1c9bf0" colorB="#69deff">twitter</Social>
+                <Social link="https://www.twitch.tv/catboybinary" colorA="#9146ff" colorB="#9146ff">twitch</Social>
+                <Social link="https://www.youtube.com/@catboybinary" colorA="#ff0033" colorB="#ff296d">youtube</Social>
+                <Social link="https://t.me/catboybinary" colorA="#25c6f0" colorB="#1d83cc">telegram</Social>
+            </div>
+            <div class="links">
+                <Social link="https://github.com/catboybinary" colorA="#FFFFFF" colorB="#AAAAAA">github</Social>
                 <Social link="https://www.curseforge.com/members/catboybinary/projects" colorA="#fd8b38" colorB="#cc2e17">curseforge</Social>
                 <Social link="https://modrinth.com/user/catboybinary" colorA="#1ced89" colorB="#14cb47">modrinth</Social>
-                <Social link="https://t.me/catboybinary" colorA="#25c6f0" colorB="#1d83cc">telegram</Social>
+
             </div>
         </div>
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const pronounsList = ["she/her", "he/him", "they/them"];
+            const pronounsList = ["she/her", "he/him"];
             const pronounsElement = document.querySelector(".pronouns") as HTMLElement;
             const animTime : number = 1.75
 
@@ -58,7 +68,7 @@ let age = ageInYears.toFixed(9);
                 pronounDiv.style.webkitTextFillColor = "#e0377b";
                 pronounDiv.style.animation = animTime+"s linear slideUp";
                 pronounDiv.textContent = pronounsList[index] + "\n"
-                    + pronounsList[(index + 1) % pronounsList.length] + "\n";
+                    + pronounsList[(index + 1) % pronounsList.length];
 
                 if (pronounsElement.firstChild) {
                     pronounsElement.removeChild(pronounsElement.firstChild);
@@ -92,13 +102,18 @@ let age = ageInYears.toFixed(9);
     }
 
     #container {
-        height: 100%;
+        min-height: 100vh; /* Use min-height for better content flow */
         background: #0b0a18;
+        display: flex;
+        flex-direction: column; /* Stack content vertically by default */
+        align-items: center; /* Center content horizontally */
+        justify-content: center; /* Center content vertically */
+        padding: 20px; /* Add some padding around the content */
+        box-sizing: border-box; /* Include padding in the element's total width and height */
     }
 
     .pronouns {
-        height: 1em; /* Adjust height to match a single pronoun */
-        width: 5em;;
+        height: 1em;
         justify-content: center;
         overflow: hidden;
         position: relative;
@@ -116,22 +131,17 @@ let age = ageInYears.toFixed(9);
     h2 {
         color: white;
         font-weight: 300;
-        margin-bottom: 5px;
-        margin-top: 5px;
+        margin-bottom: 5px; /* Adjust margin */
+        margin-top: 5px; /* Adjust margin */
+        font-size: 1.5rem; /* Use relative units for better scaling */
     }
 
     main {
-        height: 100%;
+        width: 100%; /* Make main take full width */
         display: flex;
         justify-content: center;
-    }
-
-    #logo {
-        width: 100%;
-        margin-bottom: 2em;
-        line-height: 30px;
-        vertical-align: middle;
-        display: inline-block;
+        align-items: center; /* Vertically center content within main */
+        flex-grow: 1; /* Allow main to grow and take available vertical space */
     }
 
     #hero {
@@ -143,18 +153,20 @@ let age = ageInYears.toFixed(9);
     }
 
     h1 {
-        font-size: 22px;
-        margin-top: 0.25em;
+        font-size: 1.5rem; /* Adjust font size */
+        margin-top: 0.5em;
         width: 100%;
         text-align: center;
     }
 
-    #links {
+    .links {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap; /* Allow links to wrap to the next line on smaller screens */
         width: 100%;
-        gap: 16px;
-        transform: translateY(100%);
+        gap: 10px; /* Adjust gap */
+        padding-bottom: 10px; /* Adjust padding */
+        transform: translateY(50%); /* Remove the initial translation */
     }
 
     pre {
@@ -164,12 +176,13 @@ let age = ageInYears.toFixed(9);
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin: 0;
+        font-size: 1.25rem; /* Adjust pre font size */
     }
 
     p {
         color: #4b5563;
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 1rem; /* Adjust paragraph font size */
+        line-height: 1.5;
         letter-spacing: -0.006em;
         margin: 0;
     }
@@ -180,8 +193,18 @@ let age = ageInYears.toFixed(9);
         linear-gradient(155deg, #d83333 0%, #f041ff 100%) border-box;
         border-radius: 16px;
         border: 2px solid transparent;
-        padding: 0.5ex 1ex;
-        margin: 0 0.3em 0 0.3em;
+        padding: 0.3em 0.6em; /* Adjust code padding */
+        margin: 0 0.2em 0 0.2em; /* Adjust code margin */
+        font-size: 1rem; /* Adjust code font size */
+    }
+
+    @keyframes anim {
+        0% {
+            transform: translateY(-1px) rotate(-0.5deg);
+        }
+        100% {
+            transform: translateY(1px) rotate(0.5deg);
+        }
     }
 
     @media screen and (max-height: 368px) {
@@ -190,34 +213,39 @@ let age = ageInYears.toFixed(9);
         }
     }
 
+    /* Mobile-specific styles */
     @media screen and (max-width: 768px) {
         #container {
-            display: flex;
-            flex-direction: column;
+            padding: 16px; /* Adjust overall container padding for smaller screens */
         }
 
         #hero {
-            display: block;
-            padding-top: 10%;
+            padding-top: 5vh; /* Adjust top padding relative to viewport height */
+            display: flex;
+            align-items: center; /* Center items horizontally */
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center items vertically */
+            text-align: center; /* Center text within the hero section */
         }
 
-        #links {
-            flex-wrap: wrap;
+        h2 {
+            font-size: 1.1rem;
         }
 
-        #links a.button {
-            padding: 14px 18px;
+        pre {
+            font-size: 1.1rem; /* Adjust pre font size */
         }
 
-        #news {
-            right: 16px;
-            left: 16px;
-            bottom: 2.5rem;
-            max-width: 100%;
+        .links {
+            justify-content: center; /* Ensure links are centered on mobile */
+            padding-bottom: 16px;
         }
 
-        h1 {
-            line-height: 1.5;
+        /* You might want to adjust the font size of the Social component on mobile */
+        .gradient-box a {
+            font-size: 1rem;
+            padding: 8px 16px;
+            line-height: 1; /* Adjust line height for better text wrapping */
         }
     }
 </style>
