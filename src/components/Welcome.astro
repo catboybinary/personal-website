@@ -19,7 +19,8 @@ let age = ageInYears.toFixed(9);
                     <CodeElement>catboybinary</CodeElement>
                 </h2>
                 <h2>i am
-                    <CodeElement preid="age">{age}</CodeElement> years old
+                    <CodeElement preid="age">{age}</CodeElement>
+                    years old
                 </h2>
                 <h2>my pronouns are
                     <CodeElement preclass="pronouns"></CodeElement>
@@ -33,7 +34,6 @@ let age = ageInYears.toFixed(9);
             <div class="links border" style="margin: 8px">
                 <h2 style="text-align: center;">my socials</h2>
                 <Social link="https://twitter.com/catboybinary" colorA="#1c9bf0" colorB="#69deff">twitter (18+)</Social>
-                <Social link="https://fansly.com/catboybinary" colorA="#75C7E8" colorB="#2699F6">fansly (18+)</Social>
                 <Social link="https://steamcommunity.com/id/catboybinary/" colorA="#C5C3C0" colorB="#5C7494">steam</Social>
                 <Social link="https://www.twitch.tv/catboybinary" colorA="#9146ff" colorB="#9146ff">twitch</Social>
                 <Social link="https://www.youtube.com/@catboybinary" colorA="#ff0033" colorB="#ff296d">youtube</Social>
@@ -48,7 +48,7 @@ let age = ageInYears.toFixed(9);
         document.addEventListener("DOMContentLoaded", () => {
             const pronounsList = ["she/her", "he/him"];
             const pronounsElement = document.querySelector(".pronouns") as HTMLElement;
-            const animTime: number = 1.75
+            const animTime: number = 1.75;
 
             let index: number = 0;
             let birthDate = new Date(Date.UTC(2006, 4, 4, 21, 0, 0));
@@ -65,14 +65,13 @@ let age = ageInYears.toFixed(9);
                 const pronounDiv = document.createElement("div");
                 pronounDiv.style.webkitTextFillColor = "#e0377b";
                 pronounDiv.style.animation = animTime + "s linear slideUp";
-                pronounDiv.textContent = pronounsList[index] + "\n"
-                    + pronounsList[(index + 1) % pronounsList.length];
+                pronounDiv.textContent = pronounsList[index] + "\n" + pronounsList[(index + 1) % pronounsList.length];
 
                 if (pronounsElement.firstChild) {
                     pronounsElement.removeChild(pronounsElement.firstChild);
                 }
-                pronounsElement.appendChild(pronounDiv);
 
+                pronounsElement.appendChild(pronounDiv);
                 index = (index + 1) % pronounsList.length; // Cycle through pronouns
             }
 

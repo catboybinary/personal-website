@@ -8,12 +8,12 @@ interface Props {
 
 function getAnim(animName: string): string {
     let x = Math.random()
-    return "animation: " + (2 + x) + "s infinite "+animName+";"
+    return "animation: " + (2 + x) + "s infinite " + animName + ";"
 }
 
-const {classes="", id="", preclass="", preid=""} = Astro.props as Props
+const {classes = "", id = "", preclass = "", preid = ""} = Astro.props as Props
 ---
 
-<code class={"border "+classes} id={id} style={getAnim("anim-translate")}>
+<code class={"border " + classes} id={id} style={getAnim("anim-translate")}>
     <pre class={preclass} id={preid} style={getAnim("anim-rotate")}><slot/></pre>
 </code>

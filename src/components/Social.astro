@@ -20,7 +20,9 @@ const bgColorA = hexToRgba(colorA, 0.1);
 const bgColorB = hexToRgba(colorB, 0.1);
 ---
 <div class="gradient-box">
-    <a href={link}><slot/></a>
+    <a href={link}>
+        <slot/>
+    </a>
 </div>
 
 <style define:vars={{colorA, colorB, bgColorA, bgColorB}}>
