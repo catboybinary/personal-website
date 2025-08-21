@@ -1,7 +1,15 @@
 ---
-import background from '../assets/background.svg';
+import background from "../assets/background.svg";
+import catboybinary from "../assets/catboybinary.png";
+import anythingBut from "../assets/anythingbut.gif";
+import arch from "../assets/arch.gif";
+import bi from "../assets/bisexual.gif";
+import godot from "../assets/godot.png";
+import steam from "../assets/steam.gif";
+
 import Social from "./Social.astro";
 import CodeElement from "./CodeElement.astro";
+import Banner88x31 from "./Banner88x31.astro";
 
 let birthDate = new Date(Date.UTC(2006, 4, 4, 21, 0, 0));
 let now: Date = new Date();
@@ -11,43 +19,111 @@ let age = ageInYears.toFixed(9);
 ---
 
 <div id="container">
-    <img id="background" src={background.src} alt="" fetchpriority="high"/>
+    <img id="background" src={background.src} alt="" fetchpriority="high" />
     <main>
         <div id="hero" class="border">
             <div>
-                <h2>hi, i'm
+                <h2>
+                    hi, i'm
                     <CodeElement>catboybinary</CodeElement>
                 </h2>
-                <h2>i am
+                <h2>
+                    i am
                     <CodeElement preid="age">{age}</CodeElement>
                     years old
                 </h2>
-                <h2>my pronouns are
-                    <CodeElement preclass="pronouns"></CodeElement>
+                <h2>
+                    my pronouns are
+                    <CodeElement preclass="pronouns" />
                 </h2>
-                <h2>occupations:
+                <h2>
+                    occupations:
                     <CodeElement>java programmer</CodeElement>
                     <CodeElement>game developer</CodeElement>
                     :3
                 </h2>
             </div>
-            <div class="links border" style="margin: 8px">
+            <div class="links border">
                 <h2 style="text-align: center;">my socials</h2>
-                <Social link="https://twitter.com/catboybinary" colorA="#1c9bf0" colorB="#69deff">twitter (18+)</Social>
-                <Social link="https://steamcommunity.com/id/catboybinary/" colorA="#C5C3C0" colorB="#5C7494">steam</Social>
-                <Social link="https://www.twitch.tv/catboybinary" colorA="#9146ff" colorB="#9146ff">twitch</Social>
-                <Social link="https://www.youtube.com/@catboybinary" colorA="#ff0033" colorB="#ff296d">youtube</Social>
-                <Social link="https://t.me/catboybinary" colorA="#25c6f0" colorB="#1d83cc">telegram</Social>
-                <Social link="https://github.com/catboybinary" colorA="#CFCFCF" colorB="#888888">github</Social>
-                <Social link="https://www.curseforge.com/members/catboybinary/projects" colorA="#fd8b38" colorB="#cc2e17">curseforge</Social>
-                <Social link="https://modrinth.com/user/catboybinary" colorA="#1ced89" colorB="#14cb47">modrinth</Social>
+                <Social
+                    link="https://twitter.com/catboybinary"
+                    colorA="#1c9bf0"
+                    colorB="#69deff">twitter (18+)</Social
+                >
+                <Social
+                    link="https://steamcommunity.com/id/catboybinary/"
+                    colorA="#C5C3C0"
+                    colorB="#5C7494">steam</Social
+                >
+                <Social
+                    link="https://www.twitch.tv/catboybinary"
+                    colorA="#9146ff"
+                    colorB="#9146ff">twitch</Social
+                >
+                <Social
+                    link="https://www.youtube.com/@catboybinary"
+                    colorA="#ff0033"
+                    colorB="#ff296d">youtube</Social
+                >
+                <Social
+                    link="https://t.me/catboybinary"
+                    colorA="#25c6f0"
+                    colorB="#1d83cc">telegram</Social
+                >
+                <Social
+                    link="https://github.com/catboybinary"
+                    colorA="#CFCFCF"
+                    colorB="#888888">github</Social
+                >
+                <Social
+                    link="https://www.curseforge.com/members/catboybinary/projects"
+                    colorA="#fd8b38"
+                    colorB="#cc2e17">curseforge</Social
+                >
+                <Social
+                    link="https://modrinth.com/user/catboybinary"
+                    colorA="#1ced89"
+                    colorB="#14cb47">modrinth</Social
+                >
+            </div>
+            <div class="border bannerDiv">
+                <div class="banners">
+                    <Banner88x31
+                        link="https://catboy.page/"
+                        imgsrc={catboybinary.src}
+                    />
+                    <Banner88x31
+                        link="https://jsopn.com/?glunging=true"
+                        imgsrc="https://jsopn.com/images/88x31/button.gif"
+                    />
+                    <Banner88x31
+                        link="https://senko.dev/"
+                        imgsrc="https://senko.dev/banners/senko.gif"
+                    />
+                    <Banner88x31
+                        link="https://archlinux.org/"
+                        imgsrc={arch.src}
+                    />
+                    <Banner88x31
+                        link="https://godotengine.org"
+                        imgsrc={godot.src}
+                    />
+                    <Banner88x31
+                        link="https://steamcommunity.com/id/catboybinary/"
+                        imgsrc={steam.src}
+                    />
+                    <Banner88x31 link="" imgsrc={bi.src} />
+                    <Banner88x31 link="" imgsrc={anythingBut.src} />
+                </div>
             </div>
         </div>
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const pronounsList = ["she/her", "he/him"];
-            const pronounsElement = document.querySelector(".pronouns") as HTMLElement;
+            const pronounsElement = document.querySelector(
+                ".pronouns",
+            ) as HTMLElement;
             const animTime: number = 1.75;
 
             let index: number = 0;
@@ -57,7 +133,9 @@ let age = ageInYears.toFixed(9);
                 let now: Date = new Date();
                 let ageInMs = now.getTime() - birthDate.getTime();
                 let ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
-                let ageElement: HTMLElement = document.getElementById("age") as HTMLElement;
+                let ageElement: HTMLElement = document.getElementById(
+                    "age",
+                ) as HTMLElement;
                 ageElement.textContent = ageInYears.toFixed(9);
             }
 
@@ -65,7 +143,10 @@ let age = ageInYears.toFixed(9);
                 const pronounDiv = document.createElement("div");
                 pronounDiv.style.webkitTextFillColor = "#e0377b";
                 pronounDiv.style.animation = animTime + "s linear slideUp";
-                pronounDiv.textContent = pronounsList[index] + "\n" + pronounsList[(index + 1) % pronounsList.length];
+                pronounDiv.textContent =
+                    pronounsList[index] +
+                    "\n" +
+                    pronounsList[(index + 1) % pronounsList.length];
 
                 if (pronounsElement.firstChild) {
                     pronounsElement.removeChild(pronounsElement.firstChild);
@@ -84,4 +165,3 @@ let age = ageInYears.toFixed(9);
         });
     </script>
 </div>
-

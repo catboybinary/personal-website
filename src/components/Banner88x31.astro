@@ -1,0 +1,60 @@
+---
+interface Props {
+    link?: string;
+    imgsrc: string;
+}
+
+const { link, imgsrc } = Astro.props as Props;
+---
+
+{
+    link && link.trim() !== "" ? (
+        <a class="banner88x31" href={link} target="_blank" rel="noopener">
+            <img src={imgsrc} alt={link} width="88" height="31" />
+        </a>
+    ) : (
+        <div class="banner88x31">
+            <img src={imgsrc} alt="banner" width="88" height="31" />
+        </div>
+    )
+}
+
+<style>
+    .banner88x31:hover {
+        scale: 1.1;
+        animation: 2s infinite ease-out rotation;
+        z-index: 10;
+    }
+
+    @keyframes rotation {
+        25% {
+            rotate: 2deg;
+            animation-timing-function: ease-in;
+        }
+
+        50% {
+            rotate: 0deg;
+            animation-timing-function: ease-out;
+        }
+
+        75% {
+            rotate: -2deg;
+            animation-timing-function: ease-in;
+        }
+    }
+
+    .banner88x31 {
+        transition: scale 0.15s ease-in-out;
+        display: inline-block;
+        overflow: hidden; /* keep image corners clipped */
+    }
+
+    .banner88x31 img {
+        width: 88px;
+        height: 31px;
+        border-radius: 4px;
+        image-rendering: pixelated; /* force pixel look */
+        image-rendering: crisp-edges; /* fallback for some browsers */
+        display: block;
+    }
+</style>
