@@ -11,18 +11,19 @@ const { link, imgsrc } = Astro.props as Props;
     link && link.trim() !== "" ? (
         <a class="banner88x31" href={link} target="_blank" rel="noopener">
             <img src={imgsrc} alt={link} width="88" height="31" />
+            <img id="shadow" src={imgsrc} alt={link} width="88" height="31" />
         </a>
     ) : (
         <div class="banner88x31">
             <img src={imgsrc} alt="banner" width="88" height="31" />
+            <img id="shadow" src={imgsrc} alt="banner" width="88" height="31" />
         </div>
     )
 }
 
 <style>
     .banner88x31:hover {
-        scale: 1.1;
-        animation: 2s infinite ease-out rotation;
+        scale: 2;
         z-index: 10;
     }
 
@@ -44,17 +45,36 @@ const { link, imgsrc } = Astro.props as Props;
     }
 
     .banner88x31 {
-        transition: scale 0.15s ease-in-out;
+        position: relative; /* let children position against this */
         display: inline-block;
-        overflow: hidden; /* keep image corners clipped */
+        overflow: visible; /* allow shadow to spill if blurred */
+        scale: 1;
+        z-index: 0;
+        transition:
+            scale 0.2s ease-in-out,
+            z-index 0.2s ease-in-out;
     }
 
     .banner88x31 img {
         width: 88px;
         height: 31px;
         border-radius: 4px;
-        image-rendering: pixelated; /* force pixel look */
-        image-rendering: crisp-edges; /* fallback for some browsers */
+        image-rendering: pixelated;
         display: block;
+    }
+
+    .banner88x31:hover #shadow {
+        opacity: 0.9;
+    }
+
+    /* shadow image */
+    .banner88x31 #shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        filter: blur(3px);
+        z-index: -1; /* push it underneath */
+        transition: opacity 0.5s ease-in-out;
     }
 </style>
