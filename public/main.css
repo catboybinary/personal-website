@@ -49,6 +49,12 @@ h2 {
     width: 100%; /* Ensure it respects the max-width on smaller screens */
 }
 
+a {
+    color: white;
+    font-weight: 300;
+    font-size: 1.5rem; /* Use relative units for better scaling */
+}
+
 main {
     width: 100%; /* Make main take full width */
     display: flex;
@@ -212,7 +218,7 @@ p {
         max-width: 100%;
     }
 
-    /* You might want to adjust the font size of the Social component on mobile */
+    /* You might want to adjust the font size of the Button component on mobile */
     .gradient-box a {
         font-size: 1rem;
         padding: 8px 16px;

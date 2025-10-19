@@ -1,0 +1,29 @@
+---
+import CodeElement from "./CodeElement.astro";
+
+let birthDate = new Date(Date.UTC(2006, 4, 4, 21, 0, 0));
+let now: Date = new Date();
+let ageInMs = now.getTime() - birthDate.getTime();
+let ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
+let age = ageInYears.toFixed(9);
+---
+<div>
+    <h2>
+        hi, i'm
+        <CodeElement>catboybinary</CodeElement>
+    </h2>
+    <h2>
+        i am
+        <CodeElement preid="age">{age}</CodeElement>
+        years old
+    </h2>
+    <h2>
+        my pronouns are
+        <CodeElement preclass="pronouns" />
+    </h2>
+    <h2>
+        occupations:
+        <CodeElement>java programmer</CodeElement><CodeElement>game developer</CodeElement>
+        :3
+    </h2>
+</div>
